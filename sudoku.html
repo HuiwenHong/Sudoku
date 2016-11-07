@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SUDOKU</title>
+    <!--Title font styling-->
+    <link rel="stylesheet" href="title.css">
+    <!--Sudoku styling-->
+    <link rel="stylesheet" href="sudoku.css">
+</head>
+
+<body>
+    <!--Title-->
+    <div class="flex">
+        <span class="letter" data-letter="S">S</span>
+        <span class="letter" data-letter="U">U</span>
+        <span class="letter" data-letter="D">D</span>
+        <span class="letter" data-letter="O">O</span>
+        <span class="letter" data-letter="K">K</span>
+        <span class="letter" data-letter="U">U</span>
+    </div>
+    <!--Buttons-->
+    <div class="flex buttons">
+        <button class="button" data-action="random">Random</button>
+        <button class="button grey" data-action="import_show">Import</button>
+        <button class="button" data-action="solve">Solve</button>
+    </div>
+    <!--Tables-->
+    <div class="flex main">
+        <div class="puzzle card">
+            <table class="table puzzle">
+            </table>
+        </div>
+        <div class="divider"></div>
+        <div class="solution card">
+            <table class="table solution">
+            </table>
+        </div>
+    </div>
+    <!--Import modal-->
+    <div class="import-modal" data-action="import_hide">
+        <div class="import-modal-container">
+            <p>Enter a string that contains 81 characters to create a puzzle. Use anything but 1~9 for blanks.</p>
+            <input class="importstr" type="text" maxlength="81">
+            <button class="button button-sm grey import" data-action="import_submit">import into puzzle board</button>
+        </div>
+    </div>
+    <!--Error modal-->
+    <div class="error-modal">
+        <div class="error-modal-container">
+            <p style="color:#d97d79;text-align:center;">Ooooops! There is no solution for this puzzle : (</p>
+        </div>
+    </div>
+
+
+    <!--jQuery script-->
+    <script src="jquery-3.1.1.min.js"></script>
+    <!--Sudoku script-->
+    <script src="sudoku.algorithm.js"></script>
+    <script src="sudoku.js"></script>
+    <script>
+        $(function () {
+            initTable("both");
+            setTableSize();
+            var example = testcases[0].puzzle;
+            renderPuzzleTable(example);
+            //            runTest();
+        });
+    </script>
+
+</body>
+
+</html>
